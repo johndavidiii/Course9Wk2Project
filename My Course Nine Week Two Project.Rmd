@@ -1,0 +1,39 @@
+---
+title: "My Course Nine Week Two Map Project"
+author: "ChanterJohnDavid"
+date: "12/27/2019"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+```
+## Project Requirements
+- Web Page should feature a date. The date must be two months before the date of the grading of this assignment
+- The Web page should have an interactive map that has been created by Leaflet
+```{r echo = TRUE}
+library(leaflet)
+set.seed(2016-04-25)
+
+df <- data.frame(lat = runif(500, min = 45.25, max = 46.25),
+                 lng = runif(500,min = -108.95, max = -107.95))
+
+```
+
+```{r, echo = FALSE, message=FALSE, warning=FALSE}
+#library(leaflet)
+d <- Sys.Date()
+d1 <- sprintf("Today's Date is %s",d)
+myMap <- df %>% 
+  leaflet() %>%
+  addTiles() %>%
+  addMarkers(clusterOptions = markerClusterOptions())
+
+```
+## My Map
+```{r, comment="", message=FALSE}
+d1
+myMap
+```
+
